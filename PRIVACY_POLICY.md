@@ -59,6 +59,7 @@ The app logs a small set of first-party product events under your own account, s
 - An SFI lesson completed.
 - A word crossing into "mastered."
 - A caught app error, with a trimmed error name, message, and stack trace, so we can find and fix crashes and bugs.
+- Tapping one of the app's own daily reminder notifications, including which reminder it was, so we can tell which reminders are useful.
 
 Each event is tagged with a random per-session identifier, your platform (iOS/Android/web), the app version, and, where relevant, your character level and in-game day. These events are written to `users/{your-user-id}/events` in Cloud Firestore, only readable by you. They are tied to your account, not to an individual character, so deleting a single character does not delete them; they are deleted automatically when you delete your account. We do not use a third-party analytics SDK, and this data is never sold, shared, or used for advertising or profiling.
 
