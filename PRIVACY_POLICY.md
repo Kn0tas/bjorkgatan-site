@@ -1,7 +1,7 @@
 # Björkgatan — Privacy Policy
 
 **Effective date:** 18 May 2026
-**Last updated:** 18 May 2026
+**Last updated:** 20 July 2026
 
 This privacy policy describes how Björkgatan ("the app", "we") collects and uses your personal information. We try to collect as little as possible, store it securely in the EU, and never share it with advertisers or analytics providers.
 
@@ -50,13 +50,25 @@ If you appear on the public leaderboard, the following fields are visible to oth
 
 The character name is the only piece of leaderboard data that could plausibly be linked to a real person, and only if you chose your real name as your character name. You can change your character name at any time in-game, and you can delete your character (which removes your leaderboard entry) from the game's settings.
 
+### Usage and diagnostic events
+
+The app logs a small set of first-party product events under your own account, so we can tell whether the game is working and whether lessons are actually teaching Swedish:
+
+- App opened / closed (session start and end, including session length).
+- A daily objective (`uppdrag`) completed.
+- An SFI lesson completed.
+- A word crossing into "mastered."
+- A caught app error, with a trimmed error name, message, and stack trace, so we can find and fix crashes and bugs.
+
+Each event is tagged with a random per-session identifier, your platform (iOS/Android/web), the app version, and, where relevant, your character level and in-game day. These events are written to `users/{your-user-id}/events` in Cloud Firestore, only readable by you. They are tied to your account, not to an individual character, so deleting a single character does not delete them; they are deleted automatically when you delete your account. We do not use a third-party analytics SDK, and this data is never sold, shared, or used for advertising or profiling.
+
 ### Welcome emails (currently disabled)
 
 The app contains code to send a welcome email when you sign up. **This feature is disabled for the alpha release.** No welcome emails are sent, no email service is configured, and no email documents are queued. If we enable it in the future, we will update this policy and the email will only ever be sent to the address you signed up with.
 
 ### What we do **not** collect
 
-- No analytics SDK is bundled. We do not track screens, sessions, taps, or in-app events.
+- No third-party analytics SDK is bundled, and no event data is shared outside our own Firebase project (see "Usage and diagnostic events" above for the first-party events we do log).
 - No advertising SDK is bundled. We do not show ads, and we do not share any data with ad networks.
 - No location data is requested or collected.
 - No camera, microphone, or contacts access is requested.
@@ -70,6 +82,7 @@ The app contains code to send a welcome email when you sign up. **This feature i
 | Email + password | Let you sign in across devices and recover your account | Contract (Art. 6(1)(b)) |
 | Game save data | Let you continue your game across sessions and devices | Contract (Art. 6(1)(b)) |
 | Leaderboard entry | Show your progress on the public leaderboard, an opt-out feature | Legitimate interest (Art. 6(1)(f)) — you can delete your character to remove it |
+| Usage and diagnostic events | Understand retention, lesson completion, and app stability so we can improve the game | Legitimate interest (Art. 6(1)(f)) — tied to your account and deleted when you delete it |
 
 We never use any of this data for marketing, profiling, or automated decision-making.
 
@@ -87,7 +100,7 @@ We do **not** sell, rent, or share your data with third parties for marketing or
 
 We share data only with our infrastructure providers, and only to the minimum extent needed to operate the app:
 
-- **Google Firebase** — stores your account, your game save, and your leaderboard entry.
+- **Google Firebase** — stores your account, your game save, your leaderboard entry, and your usage/diagnostic events.
 - **Expo / EAS** — builds and signs the app and delivers over-the-air JavaScript updates. EAS does not see your account data.
 
 We may disclose data if required by a binding court order, legal process, or to protect the safety of users or the public — but we do not anticipate this and would notify affected users where legally permitted.
@@ -96,6 +109,7 @@ We may disclose data if required by a binding court order, legal process, or to 
 
 - **Active accounts** — until you delete your account or character from inside the app.
 - **Deleted characters** — the character document is removed from Firestore immediately. The corresponding leaderboard entry is removed at the same time.
+- **Usage and diagnostic events** — kept at the account level until you delete your account (deleting a single character does not remove them).
 - **Auth records** — when you delete your account, your Firebase Auth record is also deleted, including the email and password hash.
 - **Inactive accounts** — we may delete accounts that have not signed in for 2 years, after a 30-day notice email to the address on file.
 
@@ -106,7 +120,7 @@ If you are in the EU/EEA you have the right to:
 - **Access** the personal data we hold about you.
 - **Rectify** any incorrect data.
 - **Erase** ("right to be forgotten") your data. The easiest way is the in-game delete-character / sign-out-and-delete-account flow. You can also email us.
-- **Restrict** processing, or **object** to processing based on legitimate interest (the leaderboard).
+- **Restrict** processing, or **object** to processing based on legitimate interest (the leaderboard, or usage and diagnostic events).
 - **Port** your data to another service in a machine-readable format. Email us and we will send a JSON export of your save.
 - **Withdraw consent** at any time where processing is based on consent.
 - **Lodge a complaint** with your local data protection authority. In Sweden this is the Integritetsskyddsmyndigheten (IMY): https://www.imy.se.
