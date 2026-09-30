@@ -1,7 +1,7 @@
 # Björkgatan — Privacy Policy
 
 **Effective date:** 18 May 2026
-**Last updated:** 20 July 2026
+**Last updated:** 28 September 2026
 
 This privacy policy describes how Björkgatan ("the app", "we") collects and uses your personal information. We try to collect as little as possible, store it securely in the EU, and never share it with advertisers or analytics providers.
 
@@ -15,7 +15,7 @@ Under the GDPR we are the **data controller** for the personal data described be
 
 ## 2. What we collect
 
-We only collect what we need to run your account and let you continue your game across devices.
+We collect account and game data to run the game, let you continue across devices, and understand how to improve the experience.
 
 ### Account data
 
@@ -60,6 +60,9 @@ The app logs a small set of first-party product events under your own account, s
 - A word crossing into "mastered."
 - A caught app error, with a trimmed error name, message, and stack trace, so we can find and fix crashes and bugs.
 - Tapping one of the app's own daily reminder notifications, including which reminder it was, so we can tell which reminders are useful.
+- During the first ten minutes after account creation, a limited activity trail: screens and game maps visited, HUD buttons and panels opened, settings changed, NPC conversations and dialogue choices, selected world interactions, and shopping attempts and completions. Each action includes its time and the current guide objective so we can understand where new players explore or stop. This trail uses game identifiers, not entered text, character names, chat messages, or recordings of your screen.
+
+The detailed first-ten-minute trail is limited to 500 records and uploaded in small batches. Pending records are temporarily stored on your device so an interrupted connection does not immediately lose them. The local buffer is cleared when you delete your account.
 
 Each event is tagged with a random per-session identifier, your platform (iOS/Android/web), the app version, and, where relevant, your character level and in-game day. These events are written to `users/{your-user-id}/events` in Cloud Firestore, only readable by you. They are tied to your account, not to an individual character, so deleting a single character does not delete them; they are deleted automatically when you delete your account. We do not use a third-party analytics SDK, and this data is never sold, shared, or used for advertising or profiling.
 
